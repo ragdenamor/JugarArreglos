@@ -20,7 +20,7 @@ pipeline{
         sh 'mvn -f $POM -B package'
       }
     }
-    stages('Prueba'){
+    stage('Prueba'){
       steps{
         sh 'mvn -f $POM test'
       }
