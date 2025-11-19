@@ -10,7 +10,7 @@ pipeline{
       POM='jugandoArreglos/pom.xml'
   }
   stages{
-    stages('Descarga'){
+    stage('Descarga'){
       steps{
         git url:'https://github.com/ragdenamor/JugarArreglos.git', branch:'main'
       }
