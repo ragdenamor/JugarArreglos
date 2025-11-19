@@ -6,7 +6,7 @@ pipeline{
   triggers{
     githubPush()
   }
-  enviroment{
+  environment{
       POM='jugandoArreglos/pom.xml'
   }
   stages{
@@ -17,7 +17,7 @@ pipeline{
     }
     stage('Compilacion'){
       steps{
-        sh 'mvn -f $POM -B'
+        sh 'mvn -f $POM -B package'
       }
     }
     stages('Prueba'){
@@ -30,9 +30,9 @@ pipeline{
         }
       }
     }
-    stage('empaquetado'){
+    stage('Empaquetado'){
       steps{
-        archiveArtifacts artifacts: 'jugandoArreglos/target/*.jar', fingerprint: true
+        archiveArtifacts artifacts: 'jugandoArreglos/target/*.jar', fingerprint:true
       }
     }
   }
